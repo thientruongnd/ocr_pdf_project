@@ -34,3 +34,13 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 python worker.py
 ```
+Dùng docker build product
+```bash
+docker-compose up -d --build
+```
+Rebuild container 
+```bash
+docker-compose down
+docker-compose build --no-cache
+docker-compose up -d
+```

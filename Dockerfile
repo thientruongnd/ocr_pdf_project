@@ -1,11 +1,14 @@
 FROM python:3.11-slim
 
-WORKDIR /app
+# Cài poppler-utils và tesseract
+RUN apt-get update && \
+    apt-get install -y poppler-utils tesseract-ocr libtesseract-dev && \
+    apt-get clean
 
-COPY requirements.txt ./
-RUN apt-get update && apt-get install -y poppler-utils tesseract-ocr \
-    && pip install --no-cache-dir -r requirements.txt
+WORKDIR /app
 
 COPY . .
 
-CMD ["gunicorn", "main:app", "--bind", "0.0.0.0:8000", "--workers", "2", "-k", "uvicorn.workers.UvicornWorker"]
+RUN pip install --no-cache-dir -r requirements.txt
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

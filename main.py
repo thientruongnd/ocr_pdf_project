@@ -8,7 +8,7 @@ import json
 from tasks import ocr_pdf_job, RESULT_DIR
 
 app = FastAPI()
-redis_conn = Redis(host="localhost", port=6379)
+redis_conn = Redis(host="redis", port=6379)
 queue = Queue(connection=redis_conn)
 
 UPLOAD_DIR = "uploads"
