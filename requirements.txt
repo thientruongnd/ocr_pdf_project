@@ -1,0 +1,12 @@
+### requirements.txt
+fastapi
+uvicorn
+python-multipart
+redis
+rq
+pytesseract
+pdf2image
+pillow
+gunicorn
+python-dotenv
+rq-dashboard
